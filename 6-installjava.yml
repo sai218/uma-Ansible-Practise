@@ -10,6 +10,6 @@
 
     - name: install java on Redhat
       apt:
-        name: openjdk-9-jdk
+        name: openjdk-9-jdk-headless
         state: present
       when: ansible_os_family== "RedHat"
