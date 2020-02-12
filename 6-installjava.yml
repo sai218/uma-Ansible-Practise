@@ -10,6 +10,6 @@
 
     - name: install java on Redhat
       yum:
-        name: openjdk-9-jdk-headless
+        name: openjdk-8-jdk
         state: present
       when: ansible_os_family== "RedHat"
