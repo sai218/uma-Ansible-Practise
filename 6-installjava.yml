@@ -1,0 +1,15 @@
+---
+- hosts: webserver
+  becoome: yes
+  tasks:
+    - name: install java on Ubuntu
+      apt:
+        name: openjdk-8-jdk
+        state: present
+      when: ansible_os_family== "Debian"
+
+    - name: install java on Redhat
+      apt:
+        name: openjdk-9-jdk
+        state: present
+      when: ansible_os_family== "RedHat"
