@@ -3,3 +3,6 @@ key : value
 webserveronUbuntu: apache2 
 webserveronRedHat: httpd
 
+installjavaonUbuntu: openjdk-8-jdk
+installjavaonRedHat: java-1.8.0-openjdk
+
