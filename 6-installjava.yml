@@ -9,7 +9,7 @@
       when: ansible_os_family== "Debian"
 
     - name: install java on Redhat
-      apt:
+      yum:
         name: openjdk-9-jdk-headless
         state: present
       when: ansible_os_family== "RedHat"
