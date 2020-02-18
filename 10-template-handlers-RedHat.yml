@@ -1,0 +1,21 @@
+---
+- hosts: dbserverRedHat
+  become: yes
+  tasks:
+   - name: installing webserver on RedHat
+     yum:
+      name: httpd
+      state: present
+     notify: restartwebserver
+
+   - name: copying index.j2 file to RedHat Node
+     template:
+      src: index.j2
+      dest: /var/www/html/index.html
+     notify: restartwebserver
+    
+  handlers:
+   - name: restartwebserver
+     service:
+        name: httpd
+        state: started
