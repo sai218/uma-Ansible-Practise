@@ -1,0 +1,23 @@
+---
+- hosts: dbserverRedHat
+  become: yes
+  tasks:
+   - name: display hostname on RedHat
+     command: hostname -f
+     register: myresult
+   
+   - name: displaying myresult value on RedHat
+     debug:
+      msg: "{{myresult}}"
+    
+   - name: installing git on RedHat
+     yum:
+      name: git
+      state: present
+     when: myresult.stderr == ""
+   
+   - name: installing tree on RedHat
+     yum:
+      name: tree
+      state: present
+     when: myresult.stderr != ""
