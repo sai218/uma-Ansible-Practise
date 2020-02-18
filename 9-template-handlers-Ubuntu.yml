@@ -1,0 +1,21 @@
+---
+- hosts: appserverUbuntu
+  become: yes
+  tasks:
+   - name: installing webserver on Ubuntu
+     apt:
+      name: apache2
+      state: present
+     notify: restartwebserver
+
+   - name: copying index.j2 file to Ubuntu Node
+     template:
+      src: index.j2
+      dest: /var/www/html/index.html
+     notify: restartwebserver
+    
+  handlers:
+   - name: restartwebserver
+     service:
+        name: apache2
+        state: started
